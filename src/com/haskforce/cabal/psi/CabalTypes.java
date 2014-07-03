@@ -1,0 +1,52 @@
+package com.haskforce.cabal.psi;
+
+import com.intellij.psi.tree.IElementType;
+
+public interface CabalTypes {
+    IElementType NAME = new CabalTokenType("NAME");
+    IElementType VERSION = new CabalTokenType("VERSION");
+    IElementType CABAL_VERSION = new CabalTokenType("CABAL_VERSION");
+    IElementType BUILD_TYPE = new CabalTokenType("BUILD_TYPE");
+    IElementType LICENSE = new CabalTokenType("LICENSE");
+    IElementType LICENSE_FILE = new CabalTokenType("LICENSE_FILE");
+    IElementType COPYRIGHT = new CabalTokenType("COPYRIGHT");
+    IElementType AUTHOR = new CabalTokenType("AUTHOR");
+    IElementType MAINTAINER = new CabalTokenType("MAINTAINER");
+    IElementType STABILITY = new CabalTokenType("STABILITY");
+    IElementType HOMEPAGE = new CabalTokenType("HOMEPAGE");
+    IElementType BUG_REPORTS = new CabalTokenType("HOMEPAGE");
+    IElementType PACKAGE_URL = new CabalTokenType("BUG_REPORTS");
+    IElementType SYNOPSIS = new CabalTokenType("SYNOPSIS");
+    IElementType DESCRIPTION = new CabalTokenType("SYNOPSIS");
+    IElementType CATEGORY = new CabalTokenType("CATEGORY");
+    IElementType TESTED_WITH = new CabalTokenType("TESTED_WITH");
+    IElementType DATA_FILES = new CabalTokenType("DATA_FILES");
+    IElementType DATA_DIR = new CabalTokenType("DATA_DIR");
+    IElementType EXTRA_SOURCE_FILES = new CabalTokenType("EXTRA_SOURCE_FILES");
+    IElementType EXTRA_TMP_FILES = new CabalTokenType("EXTRA_TMP_FILES");
+    IElementType EXPOSED_MODULES = new CabalTokenType("EXPOSED_MODULES");
+    IElementType EXPOSED = new CabalTokenType("EXPOSED");
+    IElementType MAIN_IS = new CabalTokenType("MAIN_IS");
+    IElementType BUILD_DEPENDS = new CabalTokenType("BUILD_DEPENDS");
+    IElementType HS_SOURCE_DIRS = new CabalTokenType("HS_SOURCE_DIRS");
+    IElementType EXTENSIONS = new CabalTokenType("EXTENSIONS");
+    IElementType BUILD_TOOLS = new CabalTokenType("BUILD_TOOLS");
+    IElementType GHC_OPTIONS = new CabalTokenType("GHC_OPTIONS");
+    IElementType GHC_PROF_OPTIONS = new CabalTokenType("GHC_PROF_OPTIONS");
+    IElementType GHC_SHARED_OPTIONS = new CabalTokenType("GHC_SHARED_OPTIONS");
+    IElementType HUGS_OPTIONS = new CabalTokenType("HUGS_OPTIONS");
+    IElementType NHC98_OPTIONS = new CabalTokenType("NHC98_OPTIONS");
+    IElementType INCLUDES = new CabalTokenType("INCLUDES");
+    IElementType INSTALL_INCLUDES = new CabalTokenType("INSTALL_INCLUDES");
+    IElementType INCLUDE_DIRS = new CabalTokenType("INCLUDE_DIRS");
+    IElementType C_SOURCES = new CabalTokenType("C_SOURCES");
+    IElementType EXTRA_LIBRARIES = new CabalTokenType("EXTRA_LIBRARIES");
+    IElementType EXTRA_LIB_DIRS = new CabalTokenType("EXTRA_LIB_DIRS");
+    IElementType CC_OPTIONS = new CabalTokenType("CC_OPTIONS");
+    IElementType LD_OPTIONS = new CabalTokenType("LD_OPTIONS");
+    IElementType PKGCONFIG_DEPENDS = new CabalTokenType("PKGCONFIG_DEPENDS");
+    IElementType FRAMEWORKS = new CabalTokenType("FRAMEWORKS");
+    IElementType COLON = new CabalTokenType("COLON");
+    IElementType VALUE = new CabalTokenType("VALUE");
+    IElementType COMMENT = new CabalTokenType("COMMENT");
+}
