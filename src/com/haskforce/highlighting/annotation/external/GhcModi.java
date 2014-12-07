@@ -211,33 +211,32 @@ public class GhcModi implements ModuleComponent {
     @Nullable
     private static String read(@NotNull String command, @NotNull BufferedReader input, boolean waitForInput) throws IOException, GhcModiError {
         StringBuilder builder = new StringBuilder(0);
-        if (waitForInput) {
-            wait(command, input);
-        } else if (!input.ready()) {
-            return null;
-        }
-        String line;
+        String line = null;
+        final long startTime = System.currentTimeMillis();
         for (;;) {
-            if (!input.ready()) { break; }
+            if (!input.ready()) {
+                if (waitForInput) wait(command, startTime, input);
+                else break;
+            }
             line = input.readLine();
             if (line == null || line.equals("OK")) { break; }
             if (line.startsWith("NG")) { throw new ExecError(command, line); }
             builder.append(line).append(SystemUtils.LINE_SEPARATOR);
         }
-        return builder.toString();
+        return line == null ? null : builder.toString();
     }
 
     private static final int READ_TIMEOUT = 3000;
-    private static final int READ_INTERVAL = 50;
-    private static final int READ_MAX_TRIES = READ_TIMEOUT / READ_INTERVAL;
 
-    private static void wait(@NotNull String command, @NotNull BufferedReader input) throws IOException, GhcModiError {
+    private static void wait(@NotNull String command, final long startTime, @NotNull BufferedReader input) throws IOException, GhcModiError {
         int tries = 0;
         if (!input.ready()) {
             ++tries;
-            if (tries > READ_MAX_TRIES) { throw new ExecError(command, "ghc-modi took to long to respond."); }
+            long elapsedTime = System.currentTimeMillis() - startTime;
+            if (elapsedTime > READ_TIMEOUT) { throw new ExecError(command, "ghc-modi took to long to respond."); }
             try {
-                Thread.sleep(READ_INTERVAL);
+                int readInterval = 2 ^ tries;
+                Thread.sleep(readInterval);
             } catch (InterruptedException e) {
                 throw new ExecError(command, "ghc-modi sleep thread interrupted: " + e.toString());
             }
