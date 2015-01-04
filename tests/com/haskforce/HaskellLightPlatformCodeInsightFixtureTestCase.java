@@ -25,6 +25,9 @@ public abstract class HaskellLightPlatformCodeInsightFixtureTestCase extends Lig
     private String srcPath;
     private String expectPath;
 
+    /** The test framework doesn't like Windows path separators, but works fine on Windows with Unix-style ones. */
+    protected static final String pathSeparator = "/";
+
     /**
      * Sets the expected input and outputs and calls the constructor of the parent.
      * @param srcName Directory name of test inputs.
@@ -32,8 +35,8 @@ public abstract class HaskellLightPlatformCodeInsightFixtureTestCase extends Lig
      */
     protected HaskellLightPlatformCodeInsightFixtureTestCase(String srcName, String expectName) {
         super();
-        srcPath = getDirPath() + File.separator + srcName;
-        expectPath = getDirPath() + File.separator + expectName;
+        srcPath = getDirPath() + pathSeparator + srcName;
+        expectPath = getDirPath() + pathSeparator + expectName;
     }
 
     @Override
@@ -55,7 +58,7 @@ public abstract class HaskellLightPlatformCodeInsightFixtureTestCase extends Lig
      * Base path to the test files.
      */
     protected static String getDirPath() {
-        return "tests" + File.separator + "gold";
+        return "tests" + pathSeparator + "gold";
     }
 
     /**
